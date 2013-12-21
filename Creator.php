@@ -35,7 +35,9 @@ class Creator
      */
     public function create($pointer)
     {
-        throw new InvalidPointer('invalid pointer type');
+        $instance = $this->createByPointer($pointer);
+        $this->validation($instance);
+        return $instance;
     }
 
     /**
@@ -58,6 +60,30 @@ class Creator
     final public function getContext()
     {
         return $this->context;
+    }
+
+    /**
+     * @param mixed $pointer
+     * @return object
+     * @thorws \axy\creator\errors\InvalidPointer
+     */
+    protected function createByPointer($pointer)
+    {
+        if (\is_object($pointer)) {
+            return $pointer;
+        }
+        throw new InvalidPointer('invalid pointer type');
+    }
+
+    /**
+     * Validate the result
+     *
+     * @param object $instance
+     * @thorws \axy\creator\errors\InvalidPointer
+     */
+    protected function validation($instance)
+    {
+
     }
 
     /**

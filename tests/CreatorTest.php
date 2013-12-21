@@ -56,4 +56,15 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $creator = new Creator();
         $creator->create(5);
     }
+
+    /**
+     * @covers ::create
+     * @covers ::__invoke
+     */
+    public function testDirectly()
+    {
+        $creator = new Creator();
+        $this->assertSame($creator, $creator->create($creator));
+        $this->assertSame($creator, $creator($creator));
+    }
 }
