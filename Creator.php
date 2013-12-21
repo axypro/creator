@@ -83,7 +83,13 @@ class Creator
      */
     protected function validation($instance)
     {
-
+        if (!empty($this->context['parent'])) {
+            if (!($instance instanceof $this->context['parent'])) {
+                $errmsg = 'The result should be the subclass of '.$this->context['parent'].'. ';
+                $errmsg .= 'It is instance of '.\get_class($instance);
+                throw new InvalidPointer($errmsg);
+            }
+        }
     }
 
     /**

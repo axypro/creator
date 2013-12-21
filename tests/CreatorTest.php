@@ -67,4 +67,15 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($creator, $creator->create($creator));
         $this->assertSame($creator, $creator($creator));
     }
+
+    /**
+     * @covers ::create
+     */
+    public function testValidationParent()
+    {
+        $creator = new Creator(['parent' => 'PHPUnit_Framework_TestCase']);
+        $this->assertSame($this, $creator->create($this));
+        $this->setExpectedException('axy\creator\errors\InvalidPointer');
+        $creator->create($creator);
+    }
 }
