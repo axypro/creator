@@ -90,6 +90,12 @@ class Creator
                 throw new InvalidPointer($errmsg);
             }
         }
+        if (!empty($this->context['validator'])) {
+            if (!\call_user_func($this->context['validator'], $instance)) {
+                $errmsg = 'The result validation failed';
+                throw new InvalidPointer($errmsg);
+            }
+        }
     }
 
     /**
