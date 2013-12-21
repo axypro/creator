@@ -1,4 +1,5 @@
-creator
-=======
+# axy\creator: work with magic fields
 
-Creation of objects by parameters
+Uses PHP 5.4+
+
+Dependencies: [axy\errors](https://github.com/axypro/errors).
