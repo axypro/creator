@@ -23,7 +23,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         ];
         $creator = new Creator($context);
         $expected = [
-            'namespace' => 'basens',
+            'namespace' => 'basens\\',
             'parent' => null,
             'validator' => null,
         ];
@@ -91,5 +91,37 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($creator, $creator->create($creator));
         $this->setExpectedException('axy\creator\errors\InvalidPointer');
         $creator->create($this);
+    }
+
+    /**
+     * @covers ::create
+     */
+    public function testClassname()
+    {
+        $creator = new Creator();
+        $instance1 = $creator->create('\axy\creator\tests\nstst\Target');
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance1);
+        $this->assertEmpty($instance1->args);
+        $instance2 = $creator->create('axy\creator\tests\nstst\Target');
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance2);
+        $this->assertEmpty($instance2->args);
+        $this->setExpectedException('axy\creator\errors\InvalidPointer');
+        $creator->create('axy\creator\tests\nstst\Unknown');
+    }
+
+    /**
+     * @covers ::create
+     */
+    public function testContextNamespace()
+    {
+        $creator = new Creator(['namespace' => 'axy\creator\tests']);
+        $instance1 = $creator->create('nstst\Target');
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance1);
+        $this->assertEmpty($instance1->args);
+        $instance2 = $creator->create('\axy\creator\tests\nstst\Target');
+        $this->assertInstanceOf('\axy\creator\tests\nstst\Target', $instance2);
+        $this->assertEmpty($instance2->args);
+        $this->setExpectedException('axy\creator\errors\InvalidPointer');
+        $creator->create('axy\creator\tests\nstst\Target');
     }
 }

@@ -24,6 +24,12 @@ class Creator
             throw new InvalidContext($errmsg);
         }
         $this->context = \array_replace($this->context, $context);
+        if (!empty($this->context['namespace'])) {
+            $ns = $this->context['namespace'];
+            $ns = \preg_replace('/^\\\\/s', '', $ns);
+            $ns = \preg_replace('/\\\\$/s', '', $ns);
+            $this->context['namespace'] = $ns.'\\';
+        }
     }
 
     /**
@@ -72,6 +78,9 @@ class Creator
         if (\is_object($pointer)) {
             return $pointer;
         }
+        if (\is_string($pointer)) {
+            return $this->createByClass($pointer, []);
+        }
         throw new InvalidPointer('invalid pointer type');
     }
 
@@ -96,6 +105,31 @@ class Creator
                 throw new InvalidPointer($errmsg);
             }
         }
+    }
+
+    /**
+     * Create an instance of a class
+     *
+     * @param string $classname
+     * @param array $args
+     * @return object
+     * @thorws \axy\creator\errors\InvalidPointer
+     */
+    protected function createByClass($classname, $args)
+    {
+        if (empty($classname)) {
+            throw new InvalidPointer('class name is empty');
+        }
+        if (!empty($this->context['namespace'])) {
+            if ($classname[0] !== '\\') {
+                $classname = $this->context['namespace'].$classname;
+            }
+        }
+        if (!\class_exists($classname, true)) {
+            throw new InvalidPointer('class "'.$classname.'" is not exists');
+        }
+        $class = new \ReflectionClass($classname);
+        return $class->newInstanceArgs($args);
     }
 
     /**
