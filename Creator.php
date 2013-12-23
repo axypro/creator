@@ -8,6 +8,11 @@ namespace axy\creator;
 use axy\creator\errors\InvalidContext;
 use axy\creator\errors\InvalidPointer;
 
+/**
+ * The class for building of objects by the specified parameters
+ *
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
+ */
 class Creator
 {
     /**
@@ -141,5 +146,10 @@ class Creator
         'namespace' => null,
         'parent' => null,
         'validator' => null,
+        'classname' => null,
+        'creator' => null,
+        'use_options' => false,
+        'args' => null,
+        'append_args' => null,
     ];
 }

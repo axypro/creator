@@ -20,12 +20,18 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     {
         $context = [
             'namespace' => 'basens',
+            'args' => [1, 2],
         ];
         $creator = new Creator($context);
         $expected = [
             'namespace' => 'basens\\',
             'parent' => null,
             'validator' => null,
+            'classname' => null,
+            'creator' => null,
+            'use_options' => false,
+            'args' => [1, 2],
+            'append_args' => null,
         ];
         $this->assertEquals($expected, $creator->getContext());
     }
