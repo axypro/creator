@@ -162,6 +162,9 @@ class Creator
         if (!\class_exists($classname, true)) {
             throw new InvalidPointer('class "'.$classname.'" is not exists');
         }
+        if (empty($args)) {
+            return new $classname();
+        }
         $class = new \ReflectionClass($classname);
         return $class->newInstanceArgs($args);
     }
