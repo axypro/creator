@@ -92,6 +92,9 @@ class Creator
         if (\array_key_exists('value', $pointer)) {
             return $pointer['value'];
         }
+        if (!empty($pointer['creator'])) {
+            return \call_user_func($pointer['creator'], $pointer, $this->context);
+        }
         throw new InvalidPointer('invalid pointer format');
     }
 

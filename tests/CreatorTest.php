@@ -140,4 +140,21 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(10, $creator->create(['value' => 10]));
         $this->assertSame(null, $creator->create(['value' => null]));
     }
+
+    /**
+     * @covers ::create
+     */
+    public function testCreator()
+    {
+        $creator = new Creator(['namespace' => 'axy\creator\tests']);
+        $pointer = [
+            'creator' => function ($pointer, $context) {
+                return new \axy\creator\tests\nstst\Target($context, $pointer);
+            }
+        ];
+        $target = $creator->create($pointer);
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $expected = [$creator->getContext(), $pointer];
+        $this->assertEquals($expected, $target->args);
+    }
 }
