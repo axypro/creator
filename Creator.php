@@ -89,6 +89,23 @@ class Creator
         if (!\is_array($pointer)) {
             throw new InvalidPointer('invalid pointer type');
         }
+        if (isset($pointer[0])) {
+            $p = [
+                'classname' => $pointer[0],
+            ];
+            if (!empty($pointer[1])) {
+                $args = $pointer[1];
+                if (!\is_array($args)) {
+                    throw new InvalidPointer('the second argument must be an array');
+                }
+                if ($this->context['use_options']) {
+                    $p['options'] = $args;
+                } else {
+                    $p['args'] = $args;
+                }
+            }
+            $pointer = $p;
+        }
         if (\array_key_exists('value', $pointer)) {
             return $pointer['value'];
         }

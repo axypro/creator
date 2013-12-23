@@ -214,4 +214,66 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @covers ::create
+     * @dataProvider providerList
+     * @param array $context
+     * @param array $pointer
+     * @param array $args
+     */
+    public function testList($context, $pointer, $args)
+    {
+        $creator = new Creator($context);
+        if ($args === null) {
+            $this->setExpectedException('axy\creator\errors\InvalidPointer');
+        }
+        $result = $creator->create($pointer);
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $result);
+        $this->assertEquals($args, $result->args);
+    }
+
+    /**
+     * @return array
+     */
+    public function providerList()
+    {
+        return [
+            [
+                [],
+                ['axy\creator\tests\nstst\Target'],
+                [],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests'],
+                ['nstst\Target', [1, 2]],
+                [1, 2],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests'],
+                ['axy\creator\tests\nstst\Target', [1, 2]],
+                null,
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
+                ['\axy\creator\tests\nstst\Target', [1, 2]],
+                [3, 4, 1, 2, 5, 6],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6], 'use_options' => true],
+                ['\axy\creator\tests\nstst\Target', [1, 2]],
+                [3, 4, [1, 2], 5, 6],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
+                ['\axy\creator\tests\nstst\Target'],
+                [3, 4, 5, 6],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests'],
+                ['\axy\creator\tests\nstst\Target', 5],
+                null,
+            ],
+        ];
+    }
 }
