@@ -86,7 +86,13 @@ class Creator
         if (\is_string($pointer)) {
             return $this->createByClass($pointer, []);
         }
-        throw new InvalidPointer('invalid pointer type');
+        if (!\is_array($pointer)) {
+            throw new InvalidPointer('invalid pointer type');
+        }
+        if (\array_key_exists('value', $pointer)) {
+            return $pointer['value'];
+        }
+        throw new InvalidPointer('invalid pointer format');
     }
 
     /**
