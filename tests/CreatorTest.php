@@ -31,7 +31,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             'creator' => null,
             'use_options' => false,
             'args' => [1, 2],
-            'append_args' => null,
+            'append_args' => [],
         ];
         $this->assertEquals($expected, $creator->getContext());
     }
@@ -156,5 +156,62 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
         $expected = [$creator->getContext(), $pointer];
         $this->assertEquals($expected, $target->args);
+    }
+
+    /**
+     * @covers ::create
+     * @dataProvider providerClass
+     * @param array $context
+     * @param array $pointer
+     * @param array $args
+     */
+    public function testClass($context, $pointer, $args)
+    {
+        $creator = new Creator($context);
+        if ($args === null) {
+            $this->setExpectedException('axy\creator\errors\InvalidPointer');
+        }
+        $result = $creator->create($pointer);
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $result);
+        $this->assertEquals($args, $result->args);
+    }
+
+    /**
+     * @return array
+     */
+    public function providerClass()
+    {
+        return [
+            [
+                [],
+                ['classname' => 'axy\creator\tests\nstst\Target'],
+                [],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests'],
+                ['classname' => 'nstst\Target', 'args' => [1, 2]],
+                [1, 2],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests'],
+                ['classname' => 'axy\creator\tests\nstst\Target', 'args' => [1, 2]],
+                null,
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
+                ['classname' => '\axy\creator\tests\nstst\Target', 'args' => [1, 2]],
+                [3, 4, 1, 2, 5, 6],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
+                ['classname' => '\axy\creator\tests\nstst\Target', 'options' => ['x' => 1, 'y' => 2]],
+                [3, 4, ['x' => 1, 'y' => 2], 5, 6],
+            ],
+            [
+                ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
+                ['classname' => '\axy\creator\tests\nstst\Target'],
+                [3, 4, 5, 6],
+            ],
+        ];
     }
 }

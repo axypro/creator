@@ -95,6 +95,9 @@ class Creator
         if (!empty($pointer['creator'])) {
             return \call_user_func($pointer['creator'], $pointer, $this->context);
         }
+        if (!empty($pointer['classname'])) {
+            return $this->createByClass($pointer['classname'], $this->createArgs($this->context, $pointer));
+        }
         throw new InvalidPointer('invalid pointer format');
     }
 
@@ -147,6 +150,23 @@ class Creator
     }
 
     /**
+     * @param array $context
+     * @param array $pointer
+     * @return array
+     */
+    protected function createArgs(array $context, array $pointer)
+    {
+        $args = $context['args'];
+        if (!empty($pointer['args'])) {
+            $args = \array_merge($args, $pointer['args']);
+        } elseif (!empty($pointer['options'])) {
+            $args[] = $pointer['options'];
+        }
+        $args = \array_merge($args, $context['append_args']);
+        return $args;
+    }
+
+    /**
      * The creator context
      *
      * @var array
@@ -158,7 +178,7 @@ class Creator
         'classname' => null,
         'creator' => null,
         'use_options' => false,
-        'args' => null,
-        'append_args' => null,
+        'args' => [],
+        'append_args' => [],
     ];
 }
