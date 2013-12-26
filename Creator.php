@@ -7,6 +7,7 @@ namespace axy\creator;
 
 use axy\creator\errors\InvalidContext;
 use axy\creator\errors\InvalidPointer;
+use axy\callbacks\Callback;
 
 /**
  * The class for building of objects by the specified parameters
@@ -110,7 +111,7 @@ class Creator
             return $pointer['value'];
         }
         if (!empty($pointer['creator'])) {
-            return \call_user_func($pointer['creator'], $pointer, $this->context);
+            return Callback::call($pointer['creator'], [$pointer, $this->context]);
         }
         if (!empty($pointer['classname'])) {
             return $this->createByClass($pointer['classname'], $this->createArgs($this->context, $pointer));
@@ -134,7 +135,7 @@ class Creator
             }
         }
         if (!empty($this->context['validator'])) {
-            if (!\call_user_func($this->context['validator'], $instance)) {
+            if (!Callback::call($this->context['validator'], [$instance])) {
                 $errmsg = 'The result validation failed';
                 throw new InvalidPointer($errmsg);
             }

@@ -160,6 +160,25 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::create
+     */
+    public function testExtendedCreator()
+    {
+        $creator = new Creator(['namespace' => 'axy\creator\tests']);
+        $pointer = [
+            'creator' => [
+                'function' => function () {
+                    return \func_get_args();
+                },
+                'args' => [1, 2],
+            ],
+        ];
+        $expected = [1, 2, $pointer, $creator->getContext()];
+        $actual = $creator->create($pointer);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @covers ::create
      * @dataProvider providerClass
      * @param array $context
      * @param array $pointer
