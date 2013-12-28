@@ -39,7 +39,7 @@ class PointerFormat
             throw new Disabled('');
         }
         if (!\is_array($pointer)) {
-            throw new InvalidPointer('Invalid of pointer type');
+            throw new InvalidPointer('invalid pointer type');
         }
         if (!isset($pointer[0])) {
             return $pointer;
@@ -53,7 +53,7 @@ class PointerFormat
         $args = $pointer[1];
         if (empty($context['use_options'])) {
             if (!\is_array($args)) {
-                throw new InvalidPointer('Args must be an array');
+                throw new InvalidPointer('args must be an array');
             }
             $result['args'] = $args;
         } else {

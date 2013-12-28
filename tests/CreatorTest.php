@@ -39,7 +39,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::__construct
      * @expectedException \axy\creator\errors\InvalidContext
-     * @expectedExceptionMessage Creator:Context has an invalid format: "unknown index one, two"
+     * @expectedExceptionMessage unknown index one, two
      */
     public function testInvalidContext()
     {
@@ -55,7 +55,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::create
      * @expectedException \axy\creator\errors\InvalidPointer
-     * @expectedExceptionMessage Creator:Pointer has an invalid format: "invalid pointer type"
+     * @expectedExceptionMessage invalid pointer type
      */
     public function testInvalidPointer()
     {

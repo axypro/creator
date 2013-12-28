@@ -5,7 +5,9 @@
 
 namespace axy\creator;
 
-use axy\creator\errors\InvalidContext;
+use axy\creator\helpers\ContextFormat;
+use axy\creator\helpers\PointerFormat;
+use axy\creator\helpers\Validator;
 use axy\creator\errors\InvalidPointer;
 use axy\callbacks\Callback;
 
@@ -24,18 +26,7 @@ class Creator
      */
     final public function __construct(array $context = array())
     {
-        $diff = \array_diff_key($context, $this->context);
-        if (!empty($diff)) {
-            $errmsg = 'unknown index '.\implode(', ', \array_keys($diff));
-            throw new InvalidContext($errmsg);
-        }
-        $this->context = \array_replace($this->context, $context);
-        if (!empty($this->context['namespace'])) {
-            $ns = $this->context['namespace'];
-            $ns = \preg_replace('/^\\\\/s', '', $ns);
-            $ns = \preg_replace('/\\\\$/s', '', $ns);
-            $this->context['namespace'] = $ns.'\\';
-        }
+        $this->context = ContextFormat::normalize($context);
     }
 
     /**
@@ -48,7 +39,7 @@ class Creator
     public function create($pointer)
     {
         $instance = $this->createByPointer($pointer);
-        $this->validation($instance);
+        Validator::validate($instance, $this->context);
         return $instance;
     }
 
@@ -81,32 +72,7 @@ class Creator
      */
     protected function createByPointer($pointer)
     {
-        if (\is_object($pointer)) {
-            return $pointer;
-        }
-        if (\is_string($pointer)) {
-            return $this->createByClass($pointer, []);
-        }
-        if (!\is_array($pointer)) {
-            throw new InvalidPointer('invalid pointer type');
-        }
-        if (isset($pointer[0])) {
-            $p = [
-                'classname' => $pointer[0],
-            ];
-            if (!empty($pointer[1])) {
-                $args = $pointer[1];
-                if (!\is_array($args)) {
-                    throw new InvalidPointer('the second argument must be an array');
-                }
-                if ($this->context['use_options']) {
-                    $p['options'] = $args;
-                } else {
-                    $p['args'] = $args;
-                }
-            }
-            $pointer = $p;
-        }
+        $pointer = PointerFormat::normalize($pointer, $this->context);
         if (\array_key_exists('value', $pointer)) {
             return $pointer['value'];
         }
@@ -115,30 +81,6 @@ class Creator
         }
         if (!empty($pointer['classname'])) {
             return $this->createByClass($pointer['classname'], $this->createArgs($this->context, $pointer));
-        }
-        throw new InvalidPointer('invalid pointer format');
-    }
-
-    /**
-     * Validate the result
-     *
-     * @param object $instance
-     * @thorws \axy\creator\errors\InvalidPointer
-     */
-    protected function validation($instance)
-    {
-        if (!empty($this->context['parent'])) {
-            if (!($instance instanceof $this->context['parent'])) {
-                $errmsg = 'The result should be the subclass of '.$this->context['parent'].'. ';
-                $errmsg .= 'It is instance of '.\get_class($instance);
-                throw new InvalidPointer($errmsg);
-            }
-        }
-        if (!empty($this->context['validator'])) {
-            if (!Callback::call($this->context['validator'], [$instance])) {
-                $errmsg = 'The result validation failed';
-                throw new InvalidPointer($errmsg);
-            }
         }
     }
 
@@ -186,20 +128,4 @@ class Creator
         $args = \array_merge($args, $context['append_args']);
         return $args;
     }
-
-    /**
-     * The creator context
-     *
-     * @var array
-     */
-    private $context = [
-        'namespace' => null,
-        'parent' => null,
-        'validator' => null,
-        'classname' => null,
-        'creator' => null,
-        'use_options' => false,
-        'args' => [],
-        'append_args' => [],
-    ];
 }
