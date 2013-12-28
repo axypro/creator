@@ -30,10 +30,10 @@ class ContextFormat
         }
         if (!empty($context['namespace'])) {
             if (\preg_match('/^\\\\?(.*?)\\\\?$/s', $context['namespace'], $ns)) {
-                $context['namespace'] = $ns[1] ? '\\'.$ns[1].'\\' : '\\';
+                $context['namespace'] = $ns[1] ? $ns[1].'\\' : null;
             }
         } else {
-            $context['namespace'] = '\\';
+            $context['namespace'] = null;
         }
         return \array_replace(self::$defaults, $context);
     }
