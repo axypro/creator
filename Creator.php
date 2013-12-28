@@ -8,6 +8,7 @@ namespace axy\creator;
 use axy\creator\helpers\ContextFormat;
 use axy\creator\helpers\PointerFormat;
 use axy\creator\helpers\Validator;
+use axy\creator\helpers\Args;
 use axy\creator\errors\InvalidPointer;
 use axy\callbacks\Callback;
 
@@ -80,7 +81,8 @@ class Creator
             return Callback::call($pointer['creator'], [$pointer, $this->context]);
         }
         if (!empty($pointer['classname'])) {
-            return $this->createByClass($pointer['classname'], $this->createArgs($this->context, $pointer));
+            $args = Args::createArgs($pointer, $this->context);
+            return $this->createByClass($pointer['classname'], $args);
         }
     }
 
@@ -110,22 +112,5 @@ class Creator
         }
         $class = new \ReflectionClass($classname);
         return $class->newInstanceArgs($args);
-    }
-
-    /**
-     * @param array $context
-     * @param array $pointer
-     * @return array
-     */
-    protected function createArgs(array $context, array $pointer)
-    {
-        $args = $context['args'];
-        if (!empty($pointer['args'])) {
-            $args = \array_merge($args, $pointer['args']);
-        } elseif (!empty($pointer['options'])) {
-            $args[] = $pointer['options'];
-        }
-        $args = \array_merge($args, $context['append_args']);
-        return $args;
     }
 }
