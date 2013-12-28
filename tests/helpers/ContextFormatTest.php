@@ -54,7 +54,7 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'classname' => null,
                 ],
                 [
-                    'namespace' => 'my\ns\\',
+                    'namespace' => '\my\ns\\',
                     'args' => [1, 2],
                     'append_args' => [],
                     'use_options' => true,
@@ -72,7 +72,7 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'classname' => null,
                 ],
                 [
-                    'namespace' => 'my\ns\\',
+                    'namespace' => '\my\ns\\',
                     'args' => [1, 2],
                     'append_args' => [],
                     'use_options' => true,

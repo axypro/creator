@@ -24,7 +24,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         ];
         $creator = new Creator($context);
         $expected = [
-            'namespace' => 'basens\\',
+            'namespace' => '\basens\\',
             'parent' => null,
             'validator' => null,
             'classname' => null,
