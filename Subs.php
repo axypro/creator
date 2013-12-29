@@ -60,7 +60,7 @@ class Subs implements \ArrayAccess
      */
     protected function magicErrorFieldNotFound($key)
     {
-        throw new errors\ServiceNotExists($key, $this);
+        throw new errors\ServiceNotExists($key, $this, null, __NAMESPACE__);
     }
 
     /**

@@ -18,9 +18,10 @@ class InvalidPointer extends \axy\errors\InvalidConfig
      * @param string $errmsg [optional]
      * @param int $code [optional]
      * @param \Exception $previous [optional]
+     * @param mixed $thrower [optional]
      */
-    public function __construct($errmsg = null, $code = 0, \Exception $previous = null)
+    public function __construct($errmsg = null, $code = 0, \Exception $previous = null, $thrower = null)
     {
-        parent::__construct('Creator:Pointer', $errmsg, $code, $previous);
+        parent::__construct('Creator:Pointer', $errmsg, $code, $previous, $thrower);
     }
 }
