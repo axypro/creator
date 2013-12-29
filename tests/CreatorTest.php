@@ -295,4 +295,35 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
+
+    /**
+     * @covers ::blockCreate
+     */
+    public function testBlockCreate()
+    {
+        $context = [
+            'namespace' => 'axy\creator\tests',
+        ];
+        $creator = new Creator($context);
+        $block = [
+            'this' => $this,
+            'five' => ['value' => 5],
+            'target' => [
+                'classname' => 'nstst\Target',
+                'args' => [1, 2, 3],
+            ],
+        ];
+        $actual = $creator->blockCreate($block);
+        $this->assertInternalType('array', $actual);
+        $this->assertArrayHasKey('target', $actual);
+        $target = $actual['target'];
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertEquals([1, 2, 3], $target->args);
+        $expected = [
+            'this' => $this,
+            'five' => 5,
+            'target' => $target,
+        ];
+        $this->assertEquals($expected, $actual);
+    }
 }

@@ -58,6 +58,22 @@ class Creator
     }
 
     /**
+     * Create a block of objects
+     *
+     * @param array $block
+     * @return array
+     * @throws \axy\creator\errors\InvalidPointer
+     */
+    final public function blockCreate(array $block)
+    {
+        $result = [];
+        foreach ($block as $k => $pointer) {
+            $result[$k] = $this->create($pointer);
+        }
+        return $result;
+    }
+
+    /**
      * Get the normalized context of creator
      *
      * @return array
