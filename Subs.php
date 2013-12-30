@@ -31,7 +31,7 @@ class Subs implements \ArrayAccess
     {
         $this->contexts = $contexts;
         $this->config = $config;
-        $this->name = $name;
+        $this->magicName = $name;
     }
 
     /**
@@ -64,14 +64,6 @@ class Subs implements \ArrayAccess
     }
 
     /**
-     * {@inheritdoc}
-     */
-    protected function magicGetName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @var array
      */
     private $contexts;
@@ -84,5 +76,5 @@ class Subs implements \ArrayAccess
     /**
      * @var string
      */
-    private $name;
+    private $magicName;
 }
