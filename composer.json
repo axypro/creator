@@ -18,7 +18,7 @@
         "php": ">=5.4.0",
         "axy/errors": "~0.0.1",
         "axy/callbacks": "~0.0.1",
-        "axy/magic": "master-dev"
+        "axy/magic": "~0.1.1"
     },
     "autoload": {
         "psr-0": {
