@@ -27,7 +27,7 @@ class Lazy
     }
 
     /**
-     * Get the object
+     * Creates and returns the object
      *
      * @return mixed
      * @throws \axy\creator\errors\InvalidPointer

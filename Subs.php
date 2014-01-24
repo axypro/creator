@@ -6,7 +6,7 @@
 namespace axy\creator;
 
 /**
- * Subservices that are created by configuration
+ * Subservices that are created by a configuration
  *
  * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
@@ -18,14 +18,14 @@ class Subs implements \ArrayAccess
     use \axy\magic\Named;
 
     /**
-     * Construct
+     * Constructor
      *
      * @param array $contexts
      *        the list of subservices contexts (key => context)
      * @param array $config
      *        the system configuration
      * @param string $name [optional]
-     *        the optional name of service
+     *        the optional name of service (for debug)
      */
     public function __construct(array $contexts, array $config, $name = 'Subs')
     {

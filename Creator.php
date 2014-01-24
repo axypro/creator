@@ -9,8 +9,6 @@ use axy\creator\helpers\ContextFormat;
 use axy\creator\helpers\PointerFormat;
 use axy\creator\helpers\Validator;
 use axy\creator\helpers\Builder;
-use axy\creator\errors\InvalidPointer;
-use axy\callbacks\Callback;
 
 /**
  * The class for building of objects by the specified parameters
@@ -23,7 +21,9 @@ class Creator
      * Constructor
      *
      * @param array $context [optional]
+     *        the creator context
      * @throws \axy\creator\errors\InvalidContext
+     *         the context has invalid format
      */
     final public function __construct(array $context = array())
     {
@@ -31,7 +31,7 @@ class Creator
     }
 
     /**
-     * Create an object by the pointer
+     * Creates an object by the pointer
      *
      * @param mixed $pointer
      * @return object
@@ -46,7 +46,7 @@ class Creator
     }
 
     /**
-     * Invoke: create an object by the pointer
+     * Invoke: creates an object by the pointer
      *
      * @param mixed $pointer
      * @return object
@@ -58,7 +58,7 @@ class Creator
     }
 
     /**
-     * Create a block of objects
+     * Creates a block of objects
      *
      * @param array $block
      * @return array
@@ -74,7 +74,7 @@ class Creator
     }
 
     /**
-     * Get the normalized context of creator
+     * Returns the normalized context of the creator
      *
      * @return array
      */

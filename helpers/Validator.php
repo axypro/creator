@@ -9,14 +9,14 @@ use axy\creator\errors\InvalidPointer;
 use axy\callbacks\Callback;
 
 /**
- * Validate result of creating
+ * Validate a result of creating
  *
  * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Validator
 {
     /**
-     * Check result
+     * Checks a result
      *
      * @param mixed $result
      *        the result of creating
