@@ -16,14 +16,14 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "axy/errors": "~0.0.1",
-        "axy/callbacks": "~0.0.1",
-        "axy/magic": "~0.1.1"
+        "axy/errors": "~0.0.4",
+        "axy/callbacks": "~0.0.2",
+        "axy/magic": "~0.1.4"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "axy\\creator\\": ""
         }
     },
-    "target-dir": "axy/creator"
+    "target-dir": ""
 }
