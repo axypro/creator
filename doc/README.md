@@ -12,8 +12,8 @@ Apply in the following cases
 
 ## Contents
 
-* Examples
-* Terms
+* [Examples](examples.md)
+* [Context and pointer](terms.md)
 * Format of context
 * Format of pointer
 * Class Creator
