@@ -14,8 +14,8 @@ Apply in the following cases
 
 * [Examples](examples.md)
 * [Context and pointer](terms.md)
-* Format of context
-* Format of pointer
+* [Format of pointer](pointer.md)
+* [Format of context](context.md)
 * Class Creator
 * Class Lazy
 * Class Subs

@@ -39,7 +39,7 @@ A *pointer* specified how to create the target object.
 * `$myValidator` - take the prepared object.
 * ...
 
-The full pointer format is described [here](pointer.md).
+The full pointer format is described [there](pointer.md).
 
 `$context` is *context* of the creator.
 It contains information relating to the entire group of objects.
@@ -47,4 +47,4 @@ It contains information relating to the entire group of objects.
 In the example the context specified the basic namespace of the validators classes.
 Short class names (such `NotEmpty`) are resolved relative to the basic namespace (`forms\vaildators\NotEmpty`).
 
-The full context format is described [here](context.md).
+The full context format is described [there](context.md).
