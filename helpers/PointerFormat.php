@@ -43,6 +43,17 @@ class PointerFormat
         if (!isset($pointer[0])) {
             return $pointer;
         }
+        return self::normalizeNumeric($pointer, $context);
+    }
+
+    /**
+     * @param array $pointer
+     * @param array $context
+     * @return array
+     * @throws \axy\creator\errors\InvalidPointer
+     */
+    private static function normalizeNumeric($pointer, $context)
+    {
         $result = [
             'classname' => $pointer[0],
         ];
