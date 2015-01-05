@@ -6,6 +6,7 @@
 namespace axy\creator\tests;
 
 use axy\creator\Subs;
+use axy\creator\errors\ServiceNotExists;
 
 /**
  * coversDefaultClass axy\creator\Subs
@@ -135,10 +136,11 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testNotFound()
     {
         $subs = new Subs($this->testContexts, $this->testConfig, 'MySubs');
+        $e = null;
         try {
             $subs->__get('six');
             $this->fail('not thrown');
-        } catch (\axy\creator\errors\ServiceNotExists $e) {
+        } catch (ServiceNotExists $e) {
         }
         $this->assertSame('Service MySubs.six is not exists', $e->getMessage());
     }

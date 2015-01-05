@@ -19,7 +19,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
      * @param array $pointer
      * @param array $context
      * @param array $expected
-     * @param boolean $exeption [optional]
+     * @param boolean $exception [optional]
      */
     public function testBuild($pointer, $context, $expected, $exception = false)
     {
@@ -57,7 +57,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 [
-                    'creator' => function ($pointer, $context) {
+                    'creator' => function ($pointer) {
                         return $pointer['x'] * 10;
                     },
                     'x' => 10,
@@ -122,7 +122,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                     'x' => 5,
                 ],
                 [
-                    'creator' => function ($pointer, $context) {
+                    'creator' => function ($pointer) {
                         return $pointer['x'] * 3;
                     },
                 ],

@@ -15,8 +15,8 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
     /**
      * covers ::normalize
      * @dataProvider providerNormalize
-     * @param mixed $pointer
-     * @param array $expected (null - exception)
+     * @param mixed $context
+     * @param array $expected [optional] (null - exception)
      */
     public function testNormalize($context, $expected = null)
     {
