@@ -1,6 +1,7 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\helpers;
@@ -9,8 +10,6 @@ use axy\creator\errors\InvalidPointer;
 
 /**
  * Creating a list of arguments for the constructor
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Args
 {
@@ -27,12 +26,12 @@ class Args
      */
     public static function createArgs(array $pointer, array $context)
     {
-        if (\array_key_exists('args', $pointer)) {
+        if (array_key_exists('args', $pointer)) {
             $args = $pointer['args'];
-            if (!\is_array($args)) {
+            if (!is_array($args)) {
                 throw new InvalidPointer('args must be an array');
             }
-        } elseif (\array_key_exists('options', $pointer)) {
+        } elseif (array_key_exists('options', $pointer)) {
             $args = [$pointer['options']];
         } else {
             $args = [];
@@ -41,10 +40,10 @@ class Args
             return $args;
         }
         if (!empty($context['args'])) {
-            $args = \array_merge($context['args'], $args);
+            $args = array_merge($context['args'], $args);
         }
         if (!empty($context['append_args'])) {
-            $args = \array_merge($args, $context['append_args']);
+            $args = array_merge($args, $context['append_args']);
         }
         return $args;
     }

@@ -1,6 +1,7 @@
 <?php
 /**
  * @param axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator;
@@ -12,13 +13,11 @@ use axy\creator\helpers\Builder;
 
 /**
  * The class for building of objects by the specified parameters
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Creator
 {
     /**
-     * Constructor
+     * The constructor
      *
      * @param array $context [optional]
      *        the creator context
@@ -35,7 +34,7 @@ class Creator
      *
      * @param mixed $pointer
      * @return object
-     * @thorws \axy\creator\errors\InvalidPointer
+     * @throws \axy\creator\errors\InvalidPointer
      */
     public function create($pointer)
     {
@@ -50,7 +49,7 @@ class Creator
      *
      * @param mixed $pointer
      * @return object
-     * @thorws \axy\creator\errors\InvalidPointer
+     * @throws \axy\creator\errors\InvalidPointer
      */
     final public function __invoke($pointer)
     {

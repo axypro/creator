@@ -1,31 +1,36 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator;
 
+use axy\magic\LazyField;
+use axy\magic\ArrayMagic;
+use axy\magic\ReadOnly;
+use axy\magic\Named;
+use axy\creator\errors\ServiceNotExists;
+
 /**
  * Subservices that are created by a configuration
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Subs implements \ArrayAccess
 {
-    use \axy\magic\LazyField;
-    use \axy\magic\ArrayMagic;
-    use \axy\magic\ReadOnly;
-    use \axy\magic\Named;
+    use LazyField;
+    use ArrayMagic;
+    use ReadOnly;
+    use Named;
 
     /**
-     * Constructor
+     * The constructor
      *
      * @param array $contexts
      *        the list of subservices contexts (key => context)
      * @param array $config
      *        the system configuration
      * @param string $name [optional]
-     *        the optional name of service (for debug)
+     *        the optional name of the aggregator (for debug)
      */
     public function __construct(array $contexts, array $config, $name = 'Subs')
     {
@@ -60,7 +65,7 @@ class Subs implements \ArrayAccess
      */
     protected function magicErrorFieldNotFound($key)
     {
-        throw new errors\ServiceNotExists($key, $this, null, __NAMESPACE__);
+        throw new ServiceNotExists($key, $this, null, __NAMESPACE__);
     }
 
     /**

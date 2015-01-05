@@ -9,12 +9,12 @@ use axy\creator\helpers\Builder;
 use axy\creator\tests\nstst\Target;
 
 /**
- * @coversDefaultClass axy\creator\helpers\Builder
+ * coversDefaultClass axy\creator\helpers\Builder
  */
 class BuilderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::build
+     * covers ::build
      * @dataProvider providerBuild
      * @param array $pointer
      * @param array $context

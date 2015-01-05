@@ -8,7 +8,7 @@ namespace axy\creator\tests;
 use axy\creator\Subs;
 
 /**
- * @coversDefaultClass axy\creator\Subs
+ * coversDefaultClass axy\creator\Subs
  */
 class SubsTest extends \PHPUnit_Framework_TestCase
 {
@@ -56,7 +56,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     ];
 
     /**
-     * @covers ::__isset
+     * covers ::__isset
      */
     public function testIsset()
     {
@@ -70,39 +70,39 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testGetDefault()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->one;
-        $this->assertSame('axy\creator\tests\nstst\Target', \get_class($instance));
+        $this->assertSame('axy\creator\tests\nstst\Target', get_class($instance));
         $this->assertEquals([1, 2], $instance->args);
         $this->assertSame($instance, $subs->one);
         $this->assertSame($instance, $subs['one']);
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testGetArgs()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->two;
-        $this->assertSame('axy\creator\tests\nstst\Target', \get_class($instance));
+        $this->assertSame('axy\creator\tests\nstst\Target', get_class($instance));
         $this->assertEquals([9, 10], $instance->args);
         $this->assertSame($instance, $subs->two);
         $this->assertSame($instance, $subs['two']);
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testGetClass()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->three;
-        $this->assertSame('axy\creator\tests\nstst\TargetChild', \get_class($instance));
+        $this->assertSame('axy\creator\tests\nstst\TargetChild', get_class($instance));
         $this->assertEquals([5, 6, 11, 12], $instance->args);
         $this->assertSame($instance, $subs->three);
         $this->assertSame($instance, $subs['three']);
@@ -110,8 +110,8 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
-     * @expectedException axy\creator\errors\Disabled
+     * covers ::__get
+     * @expectedException \axy\creator\errors\Disabled
      */
     public function testDisable()
     {
@@ -120,8 +120,8 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
-     * @expectedException axy\creator\errors\InvalidPointer
+     * covers ::__get
+     * @expectedException \axy\creator\errors\InvalidPointer
      */
     public function testInvalidParent()
     {
@@ -130,7 +130,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testNotFound()
     {
@@ -144,7 +144,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testInvalidContext()
     {
@@ -156,7 +156,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      */
     public function testInvalidPointer()
     {
@@ -168,7 +168,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__set
+     * covers ::__set
      * @expectedException \axy\magic\errors\ContainerReadOnly
      */
     public function testSetReadOnly()
@@ -178,7 +178,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__unset
+     * covers ::__unset
      * @expectedException \axy\magic\errors\ContainerReadOnly
      */
     public function testUnsetReadOnly()

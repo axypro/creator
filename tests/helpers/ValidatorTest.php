@@ -9,12 +9,12 @@ use axy\creator\helpers\Validator;
 use axy\creator\tests\nstst\Target;
 
 /**
- * @coversDefaultClass axy\creator\helpers\Validator
+ * coversDefaultClass axy\creator\helpers\Validator
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::validate
+     * covers ::validate
      * @dataProvider providerValidate
      * @param mixed $result
      * @param array $context
@@ -57,7 +57,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 new Target(1, 2, 3),
                 [
                     'validator' => function ($instance) {
-                        return (\array_sum($instance->args) === 6);
+                        return (array_sum($instance->args) === 6);
                     },
                 ],
                 true,
@@ -66,7 +66,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 new Target(1, 2),
                 [
                     'validator' => function ($instance) {
-                        return (\array_sum($instance->args) === 6);
+                        return (array_sum($instance->args) === 6);
                     },
                 ],
                 false,
@@ -76,7 +76,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 [
                     'parent' => 'axy\creator\tests\nstst\Target',
                     'validator' => function ($instance) {
-                        return (\array_sum($instance->args) === 6);
+                        return (array_sum($instance->args) === 6);
                     },
                 ],
                 true,
@@ -86,7 +86,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 [
                     'parent' => 'axy\creator\tests\nstst\Target',
                     'validator' => function ($instance) {
-                        return (\array_sum($instance->args) === 6);
+                        return (array_sum($instance->args) === 6);
                     },
                 ],
                 false,

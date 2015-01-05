@@ -9,13 +9,13 @@ use axy\creator\Lazy;
 use axy\creator\tests\nstst\Target;
 
 /**
- * @coversDefaultClass axy\creator\Lazy
+ * coversDefaultClass axy\creator\Lazy
  */
 class LazyTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::__construct
-     * @covers ::__invoke
+     * covers ::__construct
+     * covers ::__invoke
      */
     public function testLazyCreate()
     {

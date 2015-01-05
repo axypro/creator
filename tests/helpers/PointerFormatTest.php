@@ -8,12 +8,12 @@ namespace axy\creator\tests\helpers;
 use axy\creator\helpers\PointerFormat;
 
 /**
- * @coversDefaultClass axy\creator\helpers\PointerFormat
+ * coversDefaultClass axy\creator\helpers\PointerFormat
  */
 class PointerFormatTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::normalize
+     * covers ::normalize
      * @dataProvider providerNormalize
      * @param mixed $pointer
      * @param array $expected

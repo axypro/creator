@@ -13,7 +13,7 @@ class Target
 
     public function __construct()
     {
-        $this->args = \func_get_args();
+        $this->args = func_get_args();
         self::$count++;
     }
 }

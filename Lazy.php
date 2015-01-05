@@ -1,19 +1,18 @@
 <?php
 /**
  * @param axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator;
 
 /**
  * Lazy creation of an object
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Lazy
 {
     /**
-     * Constructor
+     * The constructor
      *
      * @param \axy\creator\Creator|array $creator
      *        a creator or a creator context

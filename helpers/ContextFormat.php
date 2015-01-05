@@ -1,6 +1,7 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\helpers;
@@ -9,13 +10,11 @@ use axy\creator\errors\InvalidContext;
 
 /**
  * Normalization of context format
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class ContextFormat
 {
     /**
-     * Normalizes of context format
+     * Normalizes the context format
      *
      * @param array $context
      * @return array
@@ -23,19 +22,19 @@ class ContextFormat
      */
     public static function normalize(array $context)
     {
-        $diff = \array_diff_key($context, self::$defaults);
+        $diff = array_diff_key($context, self::$defaults);
         if (!empty($diff)) {
-            $errmsg = 'unknown index '.\implode(', ', \array_keys($diff));
-            throw new InvalidContext($errmsg);
+            $errorMessage = 'unknown index '.implode(', ', array_keys($diff));
+            throw new InvalidContext($errorMessage);
         }
         if (!empty($context['namespace'])) {
-            if (\preg_match('/^\\\\?(.*?)\\\\?$/s', $context['namespace'], $ns)) {
+            if (preg_match('/^\\\\?(.*?)\\\\?$/s', $context['namespace'], $ns)) {
                 $context['namespace'] = $ns[1] ? $ns[1].'\\' : null;
             }
         } else {
             $context['namespace'] = null;
         }
-        return \array_replace(self::$defaults, $context);
+        return array_replace(self::$defaults, $context);
     }
 
     /**

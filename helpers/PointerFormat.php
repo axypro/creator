@@ -1,6 +1,7 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\helpers;
@@ -10,13 +11,11 @@ use axy\creator\errors\Disabled;
 
 /**
  * Normalization of pointer format
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class PointerFormat
 {
     /**
-     * Normalizes of pointer format
+     * Normalizes the pointer format
      *
      * @param mixed $pointer
      * @param array $context [optional]
@@ -26,10 +25,10 @@ class PointerFormat
      */
     public static function normalize($pointer, array $context = null)
     {
-        if (\is_object($pointer)) {
+        if (is_object($pointer)) {
             return ['value' => $pointer];
         }
-        if (\is_string($pointer)) {
+        if (is_string($pointer)) {
             return ['classname' => $pointer];
         }
         if ($pointer === null) {
@@ -38,7 +37,7 @@ class PointerFormat
         if ($pointer === false) {
             throw new Disabled('');
         }
-        if (!\is_array($pointer)) {
+        if (!is_array($pointer)) {
             throw new InvalidPointer('invalid pointer type');
         }
         if (!isset($pointer[0])) {
@@ -52,7 +51,7 @@ class PointerFormat
         }
         $args = $pointer[1];
         if (empty($context['use_options'])) {
-            if (!\is_array($args)) {
+            if (!is_array($args)) {
                 throw new InvalidPointer('args must be an array');
             }
             $result['args'] = $args;

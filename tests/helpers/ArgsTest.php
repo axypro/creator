@@ -8,12 +8,12 @@ namespace axy\creator\tests\helpers;
 use axy\creator\helpers\Args;
 
 /**
- * @coversDefaultClass axy\creator\helpers\Args
+ * coversDefaultClass axy\creator\helpers\Args
  */
 class ArgsTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::createArgs
+     * covers ::createArgs
      * @dataProvider providerCreateArgs
      * @param array $pointer
      * @param array $context

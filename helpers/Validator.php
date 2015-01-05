@@ -1,6 +1,7 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\helpers;
@@ -10,8 +11,6 @@ use axy\callbacks\Callback;
 
 /**
  * Validate a result of creating
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Validator
 {
@@ -22,6 +21,7 @@ class Validator
      *        the result of creating
      * @param array $context
      *        the context of the creator
+     * @return boolean
      * @throws \axy\creator\errors\InvalidPointer
      */
     public static function validate($result, array $context)

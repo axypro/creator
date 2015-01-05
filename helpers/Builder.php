@@ -1,18 +1,16 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\helpers;
 
 use axy\creator\errors\InvalidPointer;
-use axy\creator\helpers\Args;
 use axy\callbacks\Callback;
 
 /**
  * Build objects by the pointer
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Builder
 {
@@ -29,7 +27,7 @@ class Builder
      */
     public static function build(array $pointer, array $context)
     {
-        if (\array_key_exists('value', $pointer)) {
+        if (array_key_exists('value', $pointer)) {
             return $pointer['value'];
         }
         if (!empty($pointer['classname'])) {
@@ -60,7 +58,7 @@ class Builder
      */
     private static function buildByClassname($classname, $pointer, $context)
     {
-        if (!\class_exists($classname, true)) {
+        if (!class_exists($classname, true)) {
             throw new InvalidPointer('class "'.$classname.'" not found');
         }
         $args = Args::createArgs($pointer, $context);

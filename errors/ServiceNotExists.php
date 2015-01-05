@@ -1,16 +1,17 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\errors;
 
+use axy\magic\errors\FieldNotExist;
+
 /**
  * Subservice is not defined in contexts
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
-class ServiceNotExists extends \axy\magic\errors\FieldNotExist
+class ServiceNotExists extends FieldNotExist
 {
     /**
      * {@inheritdoc}

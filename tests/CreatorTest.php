@@ -6,15 +6,16 @@
 namespace axy\creator\tests;
 
 use axy\creator\Creator;
+use axy\creator\tests\nstst\Target;
 
 /**
- * @coversDefaultClass axy\creator\Creator
+ * coversDefaultClass axy\creator\Creator
  */
 class CreatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::__construct
-     * @covers ::getContext
+     * covers ::__construct
+     * covers ::getContext
      */
     public function testConstruct()
     {
@@ -37,7 +38,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
+     * covers ::__construct
      * @expectedException \axy\creator\errors\InvalidContext
      * @expectedExceptionMessage unknown index one, two
      */
@@ -53,7 +54,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      * @expectedException \axy\creator\errors\InvalidPointer
      * @expectedExceptionMessage invalid pointer type
      */
@@ -64,8 +65,8 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
-     * @covers ::__invoke
+     * covers ::create
+     * covers ::__invoke
      */
     public function testDirectly()
     {
@@ -75,7 +76,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testValidationParent()
     {
@@ -86,7 +87,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testValidationValidator()
     {
@@ -100,7 +101,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testClassname()
     {
@@ -116,7 +117,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testContextNamespace()
     {
@@ -132,7 +133,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testValue()
     {
@@ -142,14 +143,14 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testCreator()
     {
         $creator = new Creator(['namespace' => 'axy\creator\tests']);
         $pointer = [
             'creator' => function ($pointer, $context) {
-                return new \axy\creator\tests\nstst\Target($context, $pointer);
+                return new Target($context, $pointer);
             }
         ];
         $target = $creator->create($pointer);
@@ -159,7 +160,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      */
     public function testExtendedCreator()
     {
@@ -167,7 +168,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $pointer = [
             'creator' => [
                 'function' => function () {
-                    return \func_get_args();
+                    return func_get_args();
                 },
                 'args' => [1, 2],
             ],
@@ -178,7 +179,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      * @dataProvider providerClass
      * @param array $context
      * @param array $pointer
@@ -235,7 +236,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::create
+     * covers ::create
      * @dataProvider providerList
      * @param array $context
      * @param array $pointer
@@ -297,7 +298,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::blockCreate
+     * covers ::blockCreate
      */
     public function testBlockCreate()
     {
