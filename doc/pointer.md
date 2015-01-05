@@ -1,6 +1,6 @@
 # Format of Pointer
 
-The pointer (with the [context](context.md)] describes the created object.
+The pointer (with the [context](context.md)) describes the created object.
 
 ## Full format
 
@@ -12,10 +12,11 @@ Full format is associative array with following optional fields.
 * `args`
 * `options`
 * `reset_args`
-* Any other fields, which can use the function from `creator` field.
+* Any other fields, which can uses the function from `creator` field.
 
-#### `value (mixed)`: the value itself
+#### `value (mixed)`
 
+The value itself.
 If this field is specified then it is taken as the target value.
 The rest of the field and context are irrelevant.
 
@@ -110,7 +111,7 @@ $creator->create(
 );
 ```
 
-## `Object`
+## Object
 
 If pointer is an object this object is target.
  
@@ -122,7 +123,7 @@ $creator->create($instance); // $instance
 
 This is similar to `['value' => $instance]`.
 
-## `String (class name)`
+## String (class name)
 
 If pointer is a string this is a class name.
 This is similar to `['classname' => 'MyClass']`.
@@ -165,13 +166,13 @@ $validators = [
 ];
 ```
 
-## `NULL`
+## NULL
 
 The nested service did not redefine.
 Create default service.
 See [the class Subs](Subs.md).
 
-## `FALSE`
+## FALSE
 
 The nested service is disabled.
 See [the class Subs](Subs.md).
