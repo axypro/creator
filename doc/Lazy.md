@@ -1,4 +1,4 @@
-# The `Lazy` class
+# The Class `Lazy`
 
 An instance of `axy\creator\Lazy` is lazy builder of the target object.
 The object will be created on the first request.

@@ -18,7 +18,7 @@ Apply in the following cases
 * [Format of context](context.md)
 * [Class Creator](Creator.md)
 * [Class Lazy](Lazy.md)
-* Class Subs
+* [Class Subs](Subs.md)
 * [List of errors](errors.md)
 
 ## Callbacks
