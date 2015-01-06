@@ -340,7 +340,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $creator = new Creator($context);
         $pointer = ['Target', [3, 4]];
         $count = Target::$count;
-        $lazy = $creator->lazy($pointer);
+        $lazy = $creator->lazyCreate($pointer);
         $this->assertInstanceOf('axy\creator\Lazy', $lazy);
         $this->assertSame($count, Target::$count);
         $target = $lazy();

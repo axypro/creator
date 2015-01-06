@@ -88,7 +88,7 @@ class Creator
      * @param mixed $pointer
      * @return \axy\creator\Lazy
      */
-    public function lazy($pointer)
+    public function lazyCreate($pointer)
     {
         return new Lazy($this, $pointer);
     }
