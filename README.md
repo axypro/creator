@@ -1,4 +1,4 @@
-# axy\creator: work with magic fields
+# axy\creator: creation of objects by parameters
 
 * GitHub: [axypro/creator](https://github.com/axypro/creator)
 * Composer: [axypro/creator](https://packagist.org/packages/axy/creator)

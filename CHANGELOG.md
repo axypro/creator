@@ -1,8 +1,10 @@
-### dev-master
+### 1.0.0 (06.01.2015)
 
+* Documentation in English
+* Code style, comments, phpdoc, refactoring
 * up axy/* to 1.0.0
 
-### 0.0.3 (24.01.2013)
+### 0.0.3 (24.01.2014)
 
 * Composer: PSR-4
 * Some refs and docs
