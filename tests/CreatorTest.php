@@ -327,4 +327,28 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         ];
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * @covers ::lazy
+     */
+    public function testLazy()
+    {
+        $context = [
+            'namespace' => 'axy\creator\tests\nstst',
+            'args' => [1, 2],
+        ];
+        $creator = new Creator($context);
+        $pointer = ['Target', [3, 4]];
+        $count = Target::$count;
+        $lazy = $creator->lazy($pointer);
+        $this->assertInstanceOf('axy\creator\Lazy', $lazy);
+        $this->assertSame($count, Target::$count);
+        $target = $lazy();
+        $this->assertSame($count + 1, Target::$count);
+        $target2 = $lazy();
+        $this->assertSame($count + 1, Target::$count);
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertEquals([1, 2, 3, 4], $target->args);
+        $this->assertSame($target, $target2);
+    }
 }

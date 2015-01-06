@@ -81,4 +81,15 @@ class Creator
     {
         return $this->context;
     }
+
+    /**
+     * Creates a lazy object
+     *
+     * @param mixed $pointer
+     * @return \axy\creator\Lazy
+     */
+    public function lazy($pointer)
+    {
+        return new Lazy($this, $pointer);
+    }
 }
