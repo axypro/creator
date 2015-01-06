@@ -15,7 +15,7 @@ Simply describe the form of a config and there to describe its parameters.
 Such as validators:
 
 ```php
-'validators' => [
+$validators' = [
     'NotEmpty',
     'Email',
     ['MaxLength', 100],

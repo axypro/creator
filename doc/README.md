@@ -16,7 +16,7 @@ Apply in the following cases
 * [Context and pointer](terms.md)
 * [Format of pointer](pointer.md)
 * [Format of context](context.md)
-* Class Creator
+* [Class Creator](Creator.md)
 * Class Lazy
 * Class Subs
 * List of errors
