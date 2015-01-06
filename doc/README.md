@@ -19,7 +19,7 @@ Apply in the following cases
 * [Class Creator](Creator.md)
 * [Class Lazy](Lazy.md)
 * Class Subs
-* List of errors
+* [List of errors](errors.md)
 
 ## Callbacks
 
