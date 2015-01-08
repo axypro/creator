@@ -35,7 +35,7 @@ $context = [];
 $pointer = 'short\Name'; // \short\Name
 ```
 
-Three. `classname` must contains a module name (as `module:relativeName`).
+Three. `classname` can contains a module name (as `module:relativeName`).
 A module has its own namespace.
 
 A module resolving occurs via options `modules` and `moduleResolver` from [context](context.md).
