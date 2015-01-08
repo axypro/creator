@@ -14,6 +14,8 @@ All fields are optional.
 * `creator`
 * `parent`
 * `validator`
+* `modules`
+* `moduleResolver`
 
 #### `namespace (string)`
 
