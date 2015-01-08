@@ -44,6 +44,8 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'creator' => null,
                     'parent' => null,
                     'validator' => null,
+                    'modules' => null,
+                    'moduleResolver' => null,
                 ],
             ],
             [
@@ -62,6 +64,8 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'creator' => null,
                     'parent' => null,
                     'validator' => null,
+                    'modules' => null,
+                    'moduleResolver' => null,
                 ],
             ],
             [
@@ -80,6 +84,8 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'creator' => null,
                     'parent' => null,
                     'validator' => null,
+                    'modules' => null,
+                    'moduleResolver' => null,
                 ],
             ],
             [
@@ -97,6 +103,8 @@ class ContextFormatTest extends \PHPUnit_Framework_TestCase
                     'creator' => null,
                     'parent' => null,
                     'validator' => null,
+                    'modules' => null,
+                    'moduleResolver' => null,
                 ],
             ],
             [

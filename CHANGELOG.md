@@ -1,3 +1,7 @@
+### Dev-master
+
+* Module in classname
+
 ### 1.0.0 (06.01.2015)
 
 * Documentation in English

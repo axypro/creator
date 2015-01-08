@@ -49,5 +49,7 @@ class ContextFormat
         'creator' => null,
         'parent' => null,
         'validator' => null,
+        'modules' => null,
+        'moduleResolver' => null,
     ];
 }

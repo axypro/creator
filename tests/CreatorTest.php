@@ -33,6 +33,8 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             'use_options' => false,
             'args' => [1, 2],
             'append_args' => [],
+            'modules' => null,
+            'moduleResolver' => null,
         ];
         $this->assertEquals($expected, $creator->getContext());
     }
@@ -350,5 +352,20 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
         $this->assertEquals([1, 2, 3, 4], $target->args);
         $this->assertSame($target, $target2);
+    }
+
+    public function testModules()
+    {
+        $context = [
+            'modules' => [
+                'myModule' => 'axy\creator',
+            ],
+            'args' => [1, 2],
+        ];
+        $creator = new Creator($context);
+        $pointer = ['myModule:tests\nstst\Target', [3, 4]];
+        $target = $creator->create($pointer);
+        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertEquals([1, 2, 3, 4], $target->args);
     }
 }

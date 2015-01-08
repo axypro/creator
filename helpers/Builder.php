@@ -31,10 +31,7 @@ class Builder
             return $pointer['value'];
         }
         if (!empty($pointer['classname'])) {
-            $classname = $pointer['classname'];
-            if ((!empty($context['namespace'])) && ($classname[0] !== '\\')) {
-                $classname = $context['namespace'].$classname;
-            }
+            $classname = NameResolver::resolve($pointer['classname'], $context);
             return self::buildByClassname($classname, $pointer, $context);
         }
         if (!empty($pointer['creator'])) {
