@@ -19,6 +19,7 @@ Apply in the following cases
 * [Class Creator](Creator.md)
 * [Class Lazy](Lazy.md)
 * [Class Subs](Subs.md)
+* [Rules of classname resolving](classname.md)
 * [List of errors](errors.md)
 
 ## Callbacks

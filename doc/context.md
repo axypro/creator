@@ -69,6 +69,11 @@ If pointer do not contains `classname` and `creator` then use this fields.
 If `classname` is not specified then used `creator`.
 If `creator` is not specified too then error `InvalidPointer`.
 
+#### `module (array)` or `moduleResolver (callback)`
+
+The options for resolving the `classname`.
+See [classname resolving rules](classname.md) for details.
+
 #### `parent (string)`
 
 The full name of the parent class or the interface.

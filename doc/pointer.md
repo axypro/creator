@@ -48,10 +48,7 @@ The creator-function will take as arguments 1, 2, the pointer and the context.
 
 The class name of the target object.
 
-If contain the lead slash then it is the full name (`\my\full\class\Name`).
-
-Else it is short name.
-It will be resolved relative to the base (from the context).
+See [classname resolving rules](classname.md) for details.
 
 If pointer do not contains `value`, `creator` and `classname` then will be used the default algorithm.
 In the context will be searched `creator` and `classname`.
