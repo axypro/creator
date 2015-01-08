@@ -5,7 +5,7 @@ If a [pointer](pointer.md) point that a target object should be created by a `cl
 These rules apply to [pointer](pointer.md).
 The [context](context.md) option `classname` must contain the full class name.
 
-1. If `classname` contains `\` as first character (`\the\full\class\Name`) this is the target class name.
+One. If `classname` contains `\` as first character (`\the\full\class\Name`) this is the target class name.
 
 ```php
 $context = [
@@ -15,7 +15,7 @@ $context = [
 $pointer = '\full\Name'; // \full\Name
 ```
 
-2. If `classname` does not begin with a slash and does not contain a colon it is a relative class name.
+Two. If `classname` does not begin with a slash and does not contain a colon it is a relative class name.
 It resolved by a basic namespace from the [context](context.md).
 
 ```php
@@ -35,7 +35,7 @@ $context = [];
 $pointer = 'short\Name'; // \short\Name
 ```
 
-3. `classname` must contains a module name (as `module:relativeName`).
+Three. `classname` must contains a module name (as `module:relativeName`).
 A module has its own namespace.
 
 A module resolving occurs via options `modules` and `moduleResolver` from [context](context.md).
