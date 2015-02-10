@@ -1,6 +1,6 @@
 <?php
 /**
- * Data provider for BuidTest::testBuild()
+ * Data provider for BuildTest::testBuild()
  */
 
 namespace axy\creator\tests\helpers\providers;
@@ -33,7 +33,7 @@ return [
     ],
     [
         [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [1, 2],
         ],
         [],
@@ -41,7 +41,7 @@ return [
     ],
     [
         [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [1, 2],
         ],
         [
@@ -52,7 +52,7 @@ return [
     ],
     [
         [
-            'classname' => 'nstst\Target',
+            'classname' => 'tst\Target',
             'args' => [1, 2],
         ],
         [
@@ -64,7 +64,7 @@ return [
     ],
     [
         [
-            'classname' => '\axy\creator\tests\nstst\Target',
+            'classname' => '\axy\creator\tests\tst\Target',
             'options' => [1, 2],
         ],
         [
@@ -75,7 +75,7 @@ return [
     ],
     [
         [
-            'classname' => '\nstst\Target',
+            'classname' => '\tst\Target',
         ],
         [
             'namespace' => 'axy\creator\tests\\',
@@ -100,7 +100,7 @@ return [
         ],
         [
             'namespace' => 'axy\creator\tests\\',
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
         ],
         [1, 2],
     ],

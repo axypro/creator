@@ -20,7 +20,7 @@ class NameResolver
      * @param string $classname
      * @param array $context
      * @return string
-     * @throws \axy\errors\InvalidPointer
+     * @throws \axy\creator\errors\InvalidPointer
      */
     public static function resolve($classname, array $context)
     {

@@ -6,7 +6,7 @@
 namespace axy\creator\tests;
 
 use axy\creator\Lazy;
-use axy\creator\tests\nstst\Target;
+use axy\creator\tests\tst\Target;
 
 /**
  * coversDefaultClass axy\creator\Lazy
@@ -20,7 +20,7 @@ class LazyTest extends \PHPUnit_Framework_TestCase
     public function testLazyCreate()
     {
         $context = [
-            'namespace' => 'axy\creator\tests\nstst',
+            'namespace' => 'axy\creator\tests\tst',
             'args' => [1, 2],
         ];
         $pointer = ['Target', [3, 4]];
@@ -31,7 +31,7 @@ class LazyTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($count + 1, Target::$count);
         $target2 = $lazy();
         $this->assertSame($count + 1, Target::$count);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $target);
         $this->assertEquals([1, 2, 3, 4], $target->args);
         $this->assertSame($target, $target2);
     }

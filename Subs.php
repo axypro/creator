@@ -13,7 +13,7 @@ use axy\magic\Named;
 use axy\creator\errors\ServiceNotExists;
 
 /**
- * Subservices that are created by a configuration
+ * Nested services that are created by a configuration
  */
 class Subs implements \ArrayAccess
 {
@@ -26,7 +26,7 @@ class Subs implements \ArrayAccess
      * The constructor
      *
      * @param array $contexts
-     *        the list of subservices contexts (key => context)
+     *        the list of nested services contexts (key => context)
      * @param array $config
      *        the system configuration
      * @param string $name [optional]

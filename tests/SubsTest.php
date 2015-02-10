@@ -15,29 +15,29 @@ class SubsTest extends \PHPUnit_Framework_TestCase
 {
     private $testContexts = [
         'one' => [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [1, 2],
-            'parent' => 'axy\creator\tests\nstst\Target',
+            'parent' => 'axy\creator\tests\tst\Target',
         ],
         'two' => [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [3, 4],
-            'parent' => 'axy\creator\tests\nstst\Target',
+            'parent' => 'axy\creator\tests\tst\Target',
         ],
         'three' => [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [5, 6],
-            'parent' => 'axy\creator\tests\nstst\Target',
+            'parent' => 'axy\creator\tests\tst\Target',
         ],
         'four' => [
-            'classname' => 'axy\creator\tests\nstst\Target',
+            'classname' => 'axy\creator\tests\tst\Target',
             'args' => [7, 8],
-            'parent' => 'axy\creator\tests\nstst\Target',
+            'parent' => 'axy\creator\tests\tst\Target',
         ],
         'five' => [
-            'classname' => 'axy\creator\tests\nstst\TargetChild',
+            'classname' => 'axy\creator\tests\tst\TargetChild',
             'args' => [7, 8],
-            'parent' => 'axy\creator\tests\nstst\TargetChild',
+            'parent' => 'axy\creator\tests\tst\TargetChild',
         ],
     ];
 
@@ -47,11 +47,11 @@ class SubsTest extends \PHPUnit_Framework_TestCase
             'reset_args' => true,
         ],
         'three' => [
-            'axy\creator\tests\nstst\TargetChild',
+            'axy\creator\tests\tst\TargetChild',
             [11, 12],
         ],
         'four' => false,
-        'five' => 'axy\creator\tests\nstst\Target',
+        'five' => 'axy\creator\tests\tst\Target',
         'x' => 1,
         'y' => 2,
     ];
@@ -77,7 +77,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->one;
-        $this->assertSame('axy\creator\tests\nstst\Target', get_class($instance));
+        $this->assertSame('axy\creator\tests\tst\Target', get_class($instance));
         $this->assertEquals([1, 2], $instance->args);
         $this->assertSame($instance, $subs->one);
         $this->assertSame($instance, $subs['one']);
@@ -90,7 +90,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->two;
-        $this->assertSame('axy\creator\tests\nstst\Target', get_class($instance));
+        $this->assertSame('axy\creator\tests\tst\Target', get_class($instance));
         $this->assertEquals([9, 10], $instance->args);
         $this->assertSame($instance, $subs->two);
         $this->assertSame($instance, $subs['two']);
@@ -103,7 +103,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
         $instance = $subs->three;
-        $this->assertSame('axy\creator\tests\nstst\TargetChild', get_class($instance));
+        $this->assertSame('axy\creator\tests\tst\TargetChild', get_class($instance));
         $this->assertEquals([5, 6, 11, 12], $instance->args);
         $this->assertSame($instance, $subs->three);
         $this->assertSame($instance, $subs['three']);

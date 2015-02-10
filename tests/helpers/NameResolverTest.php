@@ -66,6 +66,12 @@ class NameResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolveModuleResolver()
     {
+        $f = function ($module, $shortName) {
+            if ($module === 'qwerty') {
+                return 'qwe\rty\\'.$shortName;
+            }
+            return null;
+        };
         $context = [
             'namespace' => 'my\ns',
             'modules' => [
@@ -73,12 +79,7 @@ class NameResolverTest extends \PHPUnit_Framework_TestCase
                 'other' => 'other\mo',
             ],
             'moduleResolver' => [
-                'function' => function ($module, $shortName) {
-                    if ($module === 'qwerty') {
-                        return 'qwe\rty\\'.$shortName;
-                    }
-                    return null;
-                }
+                'function' => $f,
             ],
         ];
         $context = ContextFormat::normalize($context);

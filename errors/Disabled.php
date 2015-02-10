@@ -7,7 +7,7 @@
 namespace axy\creator\errors;
 
 /**
- * Subservice is disabled
+ * Nested service is disabled
  */
 class Disabled extends \axy\errors\Disabled
 {

@@ -6,7 +6,7 @@
 namespace axy\creator\tests\helpers;
 
 use axy\creator\helpers\Builder;
-use axy\creator\tests\nstst\Target;
+use axy\creator\tests\tst\Target;
 
 /**
  * coversDefaultClass axy\creator\helpers\Builder

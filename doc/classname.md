@@ -59,7 +59,7 @@ $validatorsPointers = [
     '\my\MyValidator',   // my\MyValidator (full name)
     'my.module:Custom',  // my\module\validators\Custom (module)
     'qwerty:Qwerty',     // qwe\rty\Qwerty (other module)
-    'unkn:Name',         // Error: unknown module
+    'unknown:Name',         // Error: unknown module
     $myValidator,        // the object directly
 ];
 ```

@@ -6,7 +6,7 @@
 namespace axy\creator\tests\helpers;
 
 use axy\creator\helpers\Validator;
-use axy\creator\tests\nstst\Target;
+use axy\creator\tests\tst\Target;
 
 /**
  * coversDefaultClass axy\creator\helpers\Validator
@@ -74,7 +74,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             [
                 new Target(1, 2, 3),
                 [
-                    'parent' => 'axy\creator\tests\nstst\Target',
+                    'parent' => 'axy\creator\tests\tst\Target',
                     'validator' => function ($instance) {
                         return (array_sum($instance->args) === 6);
                     },
@@ -84,7 +84,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             [
                 new Target(1, 2),
                 [
-                    'parent' => 'axy\creator\tests\nstst\Target',
+                    'parent' => 'axy\creator\tests\tst\Target',
                     'validator' => function ($instance) {
                         return (array_sum($instance->args) === 6);
                     },
@@ -94,7 +94,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             [
                 12,
                 [
-                    'parent' => 'axy\creator\tests\nstst\Target',
+                    'parent' => 'axy\creator\tests\tst\Target',
                 ],
                 false,
             ],

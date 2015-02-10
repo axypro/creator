@@ -9,7 +9,7 @@ namespace axy\creator\errors;
 use axy\magic\errors\FieldNotExist;
 
 /**
- * Subservice is not defined in contexts
+ * Nested service is not defined in contexts
  */
 class ServiceNotExists extends FieldNotExist
 {

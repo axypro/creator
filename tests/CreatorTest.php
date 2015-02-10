@@ -6,7 +6,7 @@
 namespace axy\creator\tests;
 
 use axy\creator\Creator;
-use axy\creator\tests\nstst\Target;
+use axy\creator\tests\tst\Target;
 
 /**
  * coversDefaultClass axy\creator\Creator
@@ -108,14 +108,14 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     public function testClassname()
     {
         $creator = new Creator();
-        $instance1 = $creator->create('\axy\creator\tests\nstst\Target');
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance1);
+        $instance1 = $creator->create('\axy\creator\tests\tst\Target');
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $instance1);
         $this->assertEmpty($instance1->args);
-        $instance2 = $creator->create('axy\creator\tests\nstst\Target');
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance2);
+        $instance2 = $creator->create('axy\creator\tests\tst\Target');
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $instance2);
         $this->assertEmpty($instance2->args);
         $this->setExpectedException('axy\creator\errors\InvalidPointer');
-        $creator->create('axy\creator\tests\nstst\Unknown');
+        $creator->create('axy\creator\tests\tst\Unknown');
     }
 
     /**
@@ -124,14 +124,14 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     public function testContextNamespace()
     {
         $creator = new Creator(['namespace' => 'axy\creator\tests']);
-        $instance1 = $creator->create('nstst\Target');
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $instance1);
+        $instance1 = $creator->create('tst\Target');
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $instance1);
         $this->assertEmpty($instance1->args);
-        $instance2 = $creator->create('\axy\creator\tests\nstst\Target');
-        $this->assertInstanceOf('\axy\creator\tests\nstst\Target', $instance2);
+        $instance2 = $creator->create('\axy\creator\tests\tst\Target');
+        $this->assertInstanceOf('\axy\creator\tests\tst\Target', $instance2);
         $this->assertEmpty($instance2->args);
         $this->setExpectedException('axy\creator\errors\InvalidPointer');
-        $creator->create('axy\creator\tests\nstst\Target');
+        $creator->create('axy\creator\tests\tst\Target');
     }
 
     /**
@@ -156,7 +156,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             }
         ];
         $target = $creator->create($pointer);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $target);
         $expected = [$creator->getContext(), $pointer];
         $this->assertEquals($expected, $target->args);
     }
@@ -194,7 +194,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             $this->setExpectedException('axy\creator\errors\InvalidPointer');
         }
         $result = $creator->create($pointer);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $result);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $result);
         $this->assertEquals($args, $result->args);
     }
 
@@ -206,32 +206,32 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         return [
             [
                 [],
-                ['classname' => 'axy\creator\tests\nstst\Target'],
+                ['classname' => 'axy\creator\tests\tst\Target'],
                 [],
             ],
             [
                 ['namespace' => 'axy\creator\tests'],
-                ['classname' => 'nstst\Target', 'args' => [1, 2]],
+                ['classname' => 'tst\Target', 'args' => [1, 2]],
                 [1, 2],
             ],
             [
                 ['namespace' => 'axy\creator\tests'],
-                ['classname' => 'axy\creator\tests\nstst\Target', 'args' => [1, 2]],
+                ['classname' => 'axy\creator\tests\tst\Target', 'args' => [1, 2]],
                 null,
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
-                ['classname' => '\axy\creator\tests\nstst\Target', 'args' => [1, 2]],
+                ['classname' => '\axy\creator\tests\tst\Target', 'args' => [1, 2]],
                 [3, 4, 1, 2, 5, 6],
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
-                ['classname' => '\axy\creator\tests\nstst\Target', 'options' => ['x' => 1, 'y' => 2]],
+                ['classname' => '\axy\creator\tests\tst\Target', 'options' => ['x' => 1, 'y' => 2]],
                 [3, 4, ['x' => 1, 'y' => 2], 5, 6],
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
-                ['classname' => '\axy\creator\tests\nstst\Target'],
+                ['classname' => '\axy\creator\tests\tst\Target'],
                 [3, 4, 5, 6],
             ],
         ];
@@ -251,7 +251,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             $this->setExpectedException('axy\creator\errors\InvalidPointer');
         }
         $result = $creator->create($pointer);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $result);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $result);
         $this->assertEquals($args, $result->args);
     }
 
@@ -263,37 +263,37 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         return [
             [
                 [],
-                ['axy\creator\tests\nstst\Target'],
+                ['axy\creator\tests\tst\Target'],
                 [],
             ],
             [
                 ['namespace' => 'axy\creator\tests'],
-                ['nstst\Target', [1, 2]],
+                ['tst\Target', [1, 2]],
                 [1, 2],
             ],
             [
                 ['namespace' => 'axy\creator\tests'],
-                ['axy\creator\tests\nstst\Target', [1, 2]],
+                ['axy\creator\tests\tst\Target', [1, 2]],
                 null,
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
-                ['\axy\creator\tests\nstst\Target', [1, 2]],
+                ['\axy\creator\tests\tst\Target', [1, 2]],
                 [3, 4, 1, 2, 5, 6],
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6], 'use_options' => true],
-                ['\axy\creator\tests\nstst\Target', [1, 2]],
+                ['\axy\creator\tests\tst\Target', [1, 2]],
                 [3, 4, [1, 2], 5, 6],
             ],
             [
                 ['namespace' => 'axy\creator\tests', 'args' => [3, 4], 'append_args' => [5, 6]],
-                ['\axy\creator\tests\nstst\Target'],
+                ['\axy\creator\tests\tst\Target'],
                 [3, 4, 5, 6],
             ],
             [
                 ['namespace' => 'axy\creator\tests'],
-                ['\axy\creator\tests\nstst\Target', 5],
+                ['\axy\creator\tests\tst\Target', 5],
                 null,
             ],
         ];
@@ -312,7 +312,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             'this' => $this,
             'five' => ['value' => 5],
             'target' => [
-                'classname' => 'nstst\Target',
+                'classname' => 'tst\Target',
                 'args' => [1, 2, 3],
             ],
         ];
@@ -320,7 +320,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $actual);
         $this->assertArrayHasKey('target', $actual);
         $target = $actual['target'];
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $target);
         $this->assertEquals([1, 2, 3], $target->args);
         $expected = [
             'this' => $this,
@@ -331,12 +331,12 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::lazy
+     * covers ::lazyCreate
      */
     public function testLazy()
     {
         $context = [
-            'namespace' => 'axy\creator\tests\nstst',
+            'namespace' => 'axy\creator\tests\tst',
             'args' => [1, 2],
         ];
         $creator = new Creator($context);
@@ -349,7 +349,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($count + 1, Target::$count);
         $target2 = $lazy();
         $this->assertSame($count + 1, Target::$count);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $target);
         $this->assertEquals([1, 2, 3, 4], $target->args);
         $this->assertSame($target, $target2);
     }
@@ -363,9 +363,9 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
             'args' => [1, 2],
         ];
         $creator = new Creator($context);
-        $pointer = ['myModule:tests\nstst\Target', [3, 4]];
+        $pointer = ['myModule:tests\tst\Target', [3, 4]];
         $target = $creator->create($pointer);
-        $this->assertInstanceOf('axy\creator\tests\nstst\Target', $target);
+        $this->assertInstanceOf('axy\creator\tests\tst\Target', $target);
         $this->assertEquals([1, 2, 3, 4], $target->args);
     }
 }
