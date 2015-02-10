@@ -3,6 +3,7 @@
 * Module in classname
 * Inspect code and refactoring
 * @links to the documentation
+* Refactoring composer.json (remove target-dir and etc)
 
 ### 1.0.0 (06.01.2015)
 
