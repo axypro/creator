@@ -10,6 +10,8 @@ use axy\errors\InvalidConfig;
 
 /**
  * Invalid format of an object pointer
+ *
+ * @link https://github.com/axypro/creator/blob/master/doc/errors.md documentation
  */
 class InvalidPointer extends InvalidConfig
 {

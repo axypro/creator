@@ -1,6 +1,7 @@
 <?php
 /**
  * @package axy\creator
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\creator\errors;
@@ -10,7 +11,7 @@ use axy\errors\InvalidConfig;
 /**
  * Invalid format of the creator context
  *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
+ * @link https://github.com/axypro/creator/blob/master/doc/errors.md documentation
  */
 class InvalidContext extends InvalidConfig
 {

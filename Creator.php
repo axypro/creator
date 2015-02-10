@@ -13,6 +13,8 @@ use axy\creator\helpers\Builder;
 
 /**
  * The class for building of objects by the specified parameters
+ *
+ * @link https://github.com/axypro/creator/blob/master/doc/Creator.md documentation
  */
 class Creator
 {

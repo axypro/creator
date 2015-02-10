@@ -1,7 +1,8 @@
-### Dev-master
+### 1.0.1 (10.02.2015)
 
 * Module in classname
 * Inspect code and refactoring
+* @links to the documentation
 
 ### 1.0.0 (06.01.2015)
 

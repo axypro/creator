@@ -10,6 +10,8 @@ use axy\magic\errors\FieldNotExist;
 
 /**
  * Nested service is not defined in contexts
+ *
+ * @link https://github.com/axypro/creator/blob/master/doc/errors.md documentation
  */
 class ServiceNotExists extends FieldNotExist
 {

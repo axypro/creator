@@ -8,6 +8,8 @@ namespace axy\creator;
 
 /**
  * Lazy creation of an object
+ *
+ * @link https://github.com/axypro/creator/blob/master/doc/Lazy.md documentation
  */
 class Lazy
 {

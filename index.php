@@ -6,7 +6,8 @@
  * @author Oleg Grigoriev <go.vasac@gmail.com>
  * @license https://raw.github.com/axypro/creator/master/LICENSE MIT
  * @link https://github.com/axypro/creator repository
- * @link https://packagist.org/packages/axy/creator on packagist.org
+ * @link https://github.com/axypro/creator/blob/master/doc/README.md documentation
+ * @link https://packagist.org/packages/axy/creator composer
  * @uses PHP5.4+
  */
 

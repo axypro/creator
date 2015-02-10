@@ -14,6 +14,8 @@ use axy\creator\errors\ServiceNotExists;
 
 /**
  * Nested services that are created by a configuration
+ *
+ * @link https://github.com/axypro/creator/blob/master/doc/Subs.md documentation
  */
 class Subs implements \ArrayAccess
 {
