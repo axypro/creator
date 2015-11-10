@@ -1,3 +1,7 @@
+### 1.0.2 (10.11.2015)
+
+* Exclude tests, docs and etc from GitHub zip and Composer package dist
+
 ### 1.0.1 (10.02.2015)
 
 * Module in classname
