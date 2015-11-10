@@ -21,12 +21,12 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $context = [
-            'namespace' => 'basens',
+            'namespace' => 'baseNs',
             'args' => [1, 2],
         ];
         $creator = new Creator($context);
         $expected = [
-            'namespace' => 'basens\\',
+            'namespace' => 'baseNs\\',
             'parent' => null,
             'validator' => null,
             'classname' => null,
@@ -48,7 +48,7 @@ class CreatorTest extends \PHPUnit_Framework_TestCase
     public function testInvalidContext()
     {
         $context = [
-            'namespace' => 'basens',
+            'namespace' => 'baseNs',
             'one' => 'one',
             'parent' => 'Parent',
             'two' => 'two',

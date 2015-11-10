@@ -88,6 +88,6 @@ class NameResolverTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('pkg\mo\one\Two', NameResolver::resolve('package.module:one\Two', $context));
         $this->assertSame('qwe\rty\one\Two', NameResolver::resolve('qwerty:one\Two', $context));
         $this->setExpectedException('axy\creator\errors\InvalidPointer');
-        NameResolver::resolve('uiop:one\Two', $context);
+        NameResolver::resolve('uio:one\Two', $context);
     }
 }

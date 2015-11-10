@@ -77,9 +77,11 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testGetDefault()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
+        /** @noinspection PhpUndefinedFieldInspection */
         $instance = $subs->one;
         $this->assertSame('axy\creator\tests\tst\Target', get_class($instance));
         $this->assertEquals([1, 2], $instance->args);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame($instance, $subs->one);
         $this->assertSame($instance, $subs['one']);
     }
@@ -90,9 +92,11 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testGetArgs()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
+        /** @noinspection PhpUndefinedFieldInspection */
         $instance = $subs->two;
         $this->assertSame('axy\creator\tests\tst\Target', get_class($instance));
         $this->assertEquals([9, 10], $instance->args);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame($instance, $subs->two);
         $this->assertSame($instance, $subs['two']);
     }
@@ -103,11 +107,14 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testGetClass()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
+        /** @noinspection PhpUndefinedFieldInspection */
         $instance = $subs->three;
         $this->assertSame('axy\creator\tests\tst\TargetChild', get_class($instance));
         $this->assertEquals([5, 6, 11, 12], $instance->args);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame($instance, $subs->three);
         $this->assertSame($instance, $subs['three']);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertNotSame($instance, $subs->two);
     }
 
@@ -118,6 +125,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testDisable()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
+        /** @noinspection PhpUndefinedFieldInspection */
         return $subs->four;
     }
 
@@ -128,6 +136,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testInvalidParent()
     {
         $subs = new Subs($this->testContexts, $this->testConfig);
+        /** @noinspection PhpUndefinedFieldInspection */
         return $subs->five;
     }
 
@@ -155,6 +164,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
         $contexts['six'] = ['six' => 6];
         $subs = new Subs($contexts, $this->testConfig);
         $this->setExpectedException('axy\creator\errors\InvalidContext');
+        /** @noinspection PhpUndefinedFieldInspection */
         return $subs->six;
     }
 
@@ -177,6 +187,7 @@ class SubsTest extends \PHPUnit_Framework_TestCase
     public function testSetReadOnly()
     {
         $subs = new Subs($this->testContexts, $this->testConfig, 'MySubs');
+        /** @noinspection PhpUndefinedFieldInspection */
         $subs->six = 1;
     }
 
