@@ -10,6 +10,7 @@ use axy\creator\tests\tst\Target;
 
 /**
  * coversDefaultClass axy\creator\Creator
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class CreatorTest extends \PHPUnit_Framework_TestCase
 {

@@ -10,6 +10,7 @@ use axy\creator\errors\ServiceNotExists;
 
 /**
  * coversDefaultClass axy\creator\Subs
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class SubsTest extends \PHPUnit_Framework_TestCase
 {
